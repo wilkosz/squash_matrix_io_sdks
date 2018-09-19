@@ -20,12 +20,10 @@ Gem::Specification.new do |s|
   s.version     = SwaggerClient::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Swagger-Codegen"]
-  s.email       = [""]
   s.homepage    = "https://github.com/swagger-api/swagger-codegen"
   s.summary     = "Sqaush Matrix API Ruby Gem"
   s.description = "v1 documentation"
-  # TODO uncommnet and update below with a proper license 
-  #s.license     = "Apache 2.0"
+  s.license     = "Apache 2.0"
   s.required_ruby_version = ">= 1.9"
 
   s.add_runtime_dependency 'typhoeus', '~> 1.0', '>= 1.0.1'
@@ -38,6 +36,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'autotest-rails-pure', '~> 4.1', '>= 4.1.2'
   s.add_development_dependency 'autotest-growl', '~> 0.2', '>= 0.2.16'
   s.add_development_dependency 'autotest-fsevent', '~> 0.2', '>= 0.2.12'
+  s.add_development_dependency "pry", "~> 0.10.3"
 
   s.files         = `find *`.split("\n").uniq.sort.select{|f| !f.empty? }
   s.test_files    = `find spec/*`.split("\n")

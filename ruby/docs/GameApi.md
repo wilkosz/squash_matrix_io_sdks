@@ -1,6 +1,6 @@
 # SwaggerClient::GameApi
 
-All URIs are relative to *https://localhost:3000/v1*
+All URIs are relative to *http://localhost:3000/v1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
