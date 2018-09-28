@@ -1,0 +1,18 @@
+{
+    "gitUserId" : "ChronoSheets",
+    "gitRepoId" : "ChronoSheets-Ruby-Client",
+    "gemName" : "ChronoSheetsAPI",
+    "gemVersion" : "1.0.0",
+    "gemLicense" : "",
+    "gemSummary" : "Ruby API Client for ChronoSheets",
+    "gemDescription" : "ChronoSheets is a flexible timesheet solution for small to medium businesses, it is free for small teams of up to 5 and there are iOS and Android apps available. Use the ChronoSheets API to create your own custom integrations. Before starting, sign up for a ChronoSheets account at http://tsheets.xyz/signup.",
+    "gemAuthor" : "Lachlan Pearce",
+    "gemAuthorEmail" : "lachlan@chronosheets.com",
+    "moduleName" : "ChronoSheetsAPI",
+    "packageName": "ChronoSheetsAPI",
+    "apiPackage" : "ChronoSheetsClientLibApi",
+    "modelPackage" : "ChronoSheetsClientLibModel",
+    "invokerPackage" : "ChronoSheetsClient",
+    "packagePath" : "ChronoSheetsAPI",
+    "variableNamingConvention" : "camelCase"
+}

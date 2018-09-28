@@ -1,0 +1,21 @@
+{
+    "gitUserId" : "ChronoSheets",
+    "gitRepoId" : "ChronoSheets-Java-Client",
+    "groupId" : "com.chronosheets.api.android",
+    "artifactId" : "ChronoSheetsAPI",
+    "artifactVersion" : "1.0.0",
+    "artifactUrl" : "http://tsheets.xyz/api",
+    "artifactDescription": "ChronoSheets is a flexible timesheet solution for small to medium businesses, it is free for small teams of up to 5 and there are iOS and Android apps available. Use the ChronoSheets API to create your own custom integrations. Before starting, sign up for a ChronoSheets account at http://tsheets.xyz/signup.",
+    "developerName" : "Lachlan Pearce",
+    "developerEmail" : "lachlan@chronosheets.com",
+    "developerOrganization" : "chronosheets.com",
+    "developerOrganizationUrl" : "chronosheets.com",
+    "licenseName" : "",
+    "licenseUrl" : "",
+    "packageName": "ChronoSheetsAPI",
+    "apiPackage" : "ChronoSheetsClientLibApi",
+    "modelPackage" : "ChronoSheetsClientLibModel",
+    "invokerPackage" : "ChronoSheetsClient",
+    "packagePath" : "ChronoSheetsAPI",
+    "variableNamingConvention" : "camelCase"
+}
