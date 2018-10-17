@@ -1,0 +1,315 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: 'Squash Matrix API'
+  description: >-
+    # Endeavor
+
+    The squash matrix API enables clubs, players, and regions to own their information, with results being updated weekly. The API information sits ontop of squash matrix australia website [https://squashmatrix.com](https://squashmatrix.com)
+
+    # API
+
+    Aside from the documentation provided below, there is also a `{json:api}` available and can be accessed in the same manner, with the addition of the accept header `{accept: application/vnd.api+json}`. More information about json api can be viewed on their website at [http://jsonapi.org/](http://jsonapi.org/)
+
+    # Squash Matrix Scrapper
+
+    There is a ruby SDK for retrieving information from [https://squashmatrix.com](https://squashmatrix.com) which can be found at https://rubygems.org/gems/squash_matrix
+
+    # SDK's
+
+    Please stay posted! Client sdk's for the following will be provided shortly:
+
+      - Javascript
+      - Java
+      - Ruby
+
+    # Testing Server
+
+    Swagger has their own testing server which can be accessed at [https://virtserver.swaggerhub.com/squashmatrix_i/squashmatrix-api/1.0.0](https://virtserver.swaggerhub.com/squashmatrix_i/squashmatrix-api/1.0.0)
+
+    # Blog
+
+    Find relevent and interesting media on [wilkosz.com.au](http://wilkosz.com.au)
+
+    # Contact
+
+    Join this endeavor and be appart of the community [https://www.facebook.com/squashmatrixapi](https://www.facebook.com/squashmatrixapi)
+
+    <hr />
+
+schemes:
+ - https
+ - http
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+paths:
+  /clubs:
+    get:
+      summary: Get page of clubs
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: page
+          required: false
+          type: integer
+          description: The page of clubs
+        - in: query
+          name: page_size
+          required: false
+          type: integer
+          description: The size of page
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Club'
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/ApiResponseErrors'
+
+  /clubs/{squashMatrixId}:
+    get:
+      summary: Get club by Squash Matrix ID
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: squashMatrixId
+          description: Squash Matrix ID of club
+          required: true
+          type: integer
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/Club'
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/ApiResponseErrors'
+
+  /players:
+    get:
+      summary: Get page of players
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: page
+          required: false
+          type: integer
+          description: The page of players
+        - in: query
+          name: page_size
+          required: false
+          type: integer
+          description: The size of page
+
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Player'
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/ApiResponseErrors'
+
+  /players/{squashMatrixId}:
+    get:
+      summary: Get player by Squash Matrix ID
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: squashMatrixId
+          description: Squash Matrix ID of player
+          required: true
+          type: integer
+
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/Player'
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/ApiResponseErrors'
+
+  /games:
+    get:
+      summary: Get page of games
+      produces:
+        - application/json
+      parameters:
+        - in: query
+          name: page
+          type: integer
+          required: false
+          description: The page of games
+        - in: query
+          name: page_size
+          type: integer
+          required: false
+          description: The size of page
+
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              data:
+                type: array
+                items:
+                  $ref: '#/definitions/Game'
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/ApiResponseErrors'
+
+  /games/{gameId}:
+    get:
+      summary: Get game by ID
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: gameId
+          description: Numeric ID of game
+          required: true
+          type: integer
+
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              data:
+                $ref: '#/definitions/Game'
+
+        default:
+          description: Unexpected error
+          schema:
+            $ref: '#/definitions/ApiResponseErrors'
+
+definitions:
+
+  Club:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+
+  Player:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+      rating:
+        type: number
+        format: double
+
+  Game:
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      date:
+        type: string
+        format: date
+      division:
+        type: string
+      event:
+        type: string
+      round:
+        type: string
+      position:
+        type: string
+      player_a_points:
+        type: integer
+        format: int32
+      player_b_points:
+        type: integer
+        format: int32
+      player_a_games:
+        type: integer
+        format: int32
+      player_b_games:
+        type: integer
+        format: int32
+      player_a_rating:
+        type: number
+        format: double
+      player_b_rating:
+        type: number
+        format: double
+      player_a_rating_adjustment:
+        type: number
+        format: double
+      player_b_rating_adjustment:
+        type: number
+        format: double
+      match_id:
+        type: integer
+        format: int32
+
+  ApiResponseErrors:
+    type: object
+    properties:
+      errors:
+        type: array
+        items:
+          type: object
+          required:
+            - code
+            - detail
+          properties:
+            code:
+              type: string
+            detail:
+              type: string
+            message:
+              type: string
+
+# host: api.squashmatrix.io
+# basePath: /v1
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /squashmatrix_i/squash-matrix-api/1.0.0
