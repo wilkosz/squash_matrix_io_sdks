@@ -23,10 +23,6 @@ info:
       - Java
       - Ruby
 
-    # Testing Server
-
-    Swagger has their own testing server which can be accessed at [https://virtserver.swaggerhub.com/squashmatrix_i/squashmatrix-api/1.0.0](https://virtserver.swaggerhub.com/squashmatrix_i/squashmatrix-api/1.0.0)
-
     # Blog
 
     Find relevent and interesting media on [wilkosz.com.au](http://wilkosz.com.au)
@@ -232,6 +228,12 @@ definitions:
         format: int64
       name:
         type: string
+      player_ids:
+        description: Players associated with the club
+        type: array
+        items:
+          type: integer
+          format: int32
 
   Player:
     type: object
@@ -244,6 +246,14 @@ definitions:
       rating:
         type: number
         format: double
+      games_as_player_a:
+        type: array
+        items:
+          $ref: '#/definitions/Game'
+      games_as_player_b:
+        type: array
+        items:
+          $ref: '#/definitions/Game'
 
   Game:
     type: object
@@ -262,6 +272,18 @@ definitions:
         type: string
       position:
         type: string
+      player_a_name:
+        type: string
+      player_b_name:
+        type: string
+      player_a_id:
+        description: Player association
+        type: integer
+        format: int32
+      player_b_id:
+        description: Player association
+        type: integer
+        format: int32
       player_a_points:
         type: integer
         format: int32
@@ -287,6 +309,7 @@ definitions:
         type: number
         format: double
       match_id:
+        description: Squash Matrix mathch id
         type: integer
         format: int32
 
@@ -308,8 +331,5 @@ definitions:
             message:
               type: string
 
-# host: api.squashmatrix.io
-# basePath: /v1
-# Added by API Auto Mocking Plugin
-host: virtserver.swaggerhub.com
-basePath: /squashmatrix_i/squash-matrix-api/1.0.0
+host: api.squashmatrix.io
+basePath: /v1
