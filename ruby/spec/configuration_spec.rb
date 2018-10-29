@@ -1,7 +1,7 @@
 =begin
-#Sqaush Matrix API
+#Squash Matrix API
 
-#v1 documentation
+## Endeavor The squash matrix API enables clubs, players, and regions to own their information, with results being updated weekly. The API information sits ontop of squash matrix australia website [https://squashmatrix.com](https://squashmatrix.com) # API Aside from the documentation provided below, there is also a `{json:api}` available and can be accessed in the same manner, with the addition of the accept header `{accept: application/vnd.api+json}`. More information about json api can be viewed on their website at [http://jsonapi.org/](http://jsonapi.org/) # Squash Matrix Scrapper There is a ruby SDK for retrieving information from [https://squashmatrix.com](https://squashmatrix.com) which can be found at https://rubygems.org/gems/squash_matrix # SDK's Please stay posted! Client sdk's for the following will be provided shortly:    - Javascript   - Java   - Ruby  # Blog Find relevent and interesting media on [wilkosz.com.au](http://wilkosz.com.au) # Contact Join this endeavor and be appart of the community [https://www.facebook.com/squashmatrixapi](https://www.facebook.com/squashmatrixapi) <hr />
 
 OpenAPI spec version: 1.0.0
 
@@ -12,14 +12,14 @@ Swagger Codegen version: 2.3.1
 
 require 'spec_helper'
 
-describe SwaggerClient::Configuration do
-  let(:config) { SwaggerClient::Configuration.default }
+describe SquashMatrixAPI::Configuration do
+  let(:config) { SquashMatrixAPI::Configuration.default }
 
   before(:each) do
     # uncomment below to setup host and base_path
     #require 'URI'
-    #uri = URI.parse("https://localhost:3000/v1")
-    #SwaggerClient.configure do |c|
+    #uri = URI.parse("https://api.squashmatrix.io/v1")
+    #SquashMatrixAPI.configure do |c|
     #  c.host = uri.host
     #  c.base_path = uri.path
     #end
@@ -28,14 +28,14 @@ describe SwaggerClient::Configuration do
   describe '#base_url' do
     it 'should have the default value' do
       # uncomment below to test default value of the base path
-      #expect(config.base_url).to eq("https://localhost:3000/v1")
+      #expect(config.base_url).to eq("https://api.squashmatrix.io/v1")
     end
 
     it 'should remove trailing slashes' do
       [nil, '', '/', '//'].each do |base_path|
         config.base_path = base_path
         # uncomment below to test trailing slashes
-        #expect(config.base_url).to eq("https://localhost:3000/v1")
+        #expect(config.base_url).to eq("https://api.squashmatrix.io/v1")
       end
     end
   end

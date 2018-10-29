@@ -1,13 +1,12 @@
-# SwaggerClient::Player
+# SquashMatrixAPI::Player
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  | 
-**name** | **String** |  | 
-**rating** | **Integer** |  | 
-**games_as_player_a** | [**Array&lt;Game&gt;**](Game.md) |  | 
-**games_as_player_b** | [**Array&lt;Game&gt;**](Game.md) |  | 
-**clubs** | [**Array&lt;Club&gt;**](Club.md) |  | 
+**id** | **Integer** |  | [optional] 
+**name** | **String** |  | [optional] 
+**rating** | **Float** |  | [optional] 
+**games_as_player_a** | [**Array&lt;Game&gt;**](Game.md) |  | [optional] 
+**games_as_player_b** | [**Array&lt;Game&gt;**](Game.md) |  | [optional] 
 
 

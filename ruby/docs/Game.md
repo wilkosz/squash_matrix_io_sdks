@@ -1,24 +1,26 @@
-# SwaggerClient::Game
+# SquashMatrixAPI::Game
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Integer** |  | 
-**date** | **DateTime** |  | 
-**devision** | **String** |  | [optional] 
-**event** | **String** |  | 
-**round** | **String** |  | 
-**position** | **String** |  | 
-**player_a_points** | **Integer** |  | 
-**player_b_points** | **Integer** |  | 
-**player_a_games** | **Integer** |  | 
-**player_b_games** | **Integer** |  | 
-**player_a_rating** | **Float** |  | 
-**player_b_rating** | **Float** |  | 
+**id** | **Integer** |  | [optional] 
+**date** | **Date** |  | [optional] 
+**division** | **String** |  | [optional] 
+**event** | **String** |  | [optional] 
+**round** | **String** |  | [optional] 
+**position** | **String** |  | [optional] 
+**player_a_name** | **String** |  | [optional] 
+**player_b_name** | **String** |  | [optional] 
+**player_a_id** | **Integer** | Player association | [optional] 
+**player_b_id** | **Integer** | Player association | [optional] 
+**player_a_points** | **Integer** |  | [optional] 
+**player_b_points** | **Integer** |  | [optional] 
+**player_a_games** | **Integer** |  | [optional] 
+**player_b_games** | **Integer** |  | [optional] 
+**player_a_rating** | **Float** |  | [optional] 
+**player_b_rating** | **Float** |  | [optional] 
 **player_a_rating_adjustment** | **Float** |  | [optional] 
 **player_b_rating_adjustment** | **Float** |  | [optional] 
-**match_id** | **Integer** |  | 
-**player_a** | [**Player**](Player.md) |  | 
-**player_b** | [**Player**](Player.md) |  | 
+**match_id** | **Integer** | Squash Matrix mathch id | [optional] 
 
 

@@ -1,7 +1,7 @@
 =begin
-#Sqaush Matrix API
+#Squash Matrix API
 
-#v1 documentation
+## Endeavor The squash matrix API enables clubs, players, and regions to own their information, with results being updated weekly. The API information sits ontop of squash matrix australia website [https://squashmatrix.com](https://squashmatrix.com) # API Aside from the documentation provided below, there is also a `{json:api}` available and can be accessed in the same manner, with the addition of the accept header `{accept: application/vnd.api+json}`. More information about json api can be viewed on their website at [http://jsonapi.org/](http://jsonapi.org/) # Squash Matrix Scrapper There is a ruby SDK for retrieving information from [https://squashmatrix.com](https://squashmatrix.com) which can be found at https://rubygems.org/gems/squash_matrix # SDK's Please stay posted! Client sdk's for the following will be provided shortly:    - Javascript   - Java   - Ruby  # Blog Find relevent and interesting media on [wilkosz.com.au](http://wilkosz.com.au) # Contact Join this endeavor and be appart of the community [https://www.facebook.com/squashmatrixapi](https://www.facebook.com/squashmatrixapi) <hr />
 
 OpenAPI spec version: 1.0.0
 
@@ -12,51 +12,51 @@ Swagger Codegen version: 2.3.1
 
 require 'spec_helper'
 
-describe SwaggerClient::ApiClient do
+describe SquashMatrixAPI::ApiClient do
   context 'initialization' do
     context 'URL stuff' do
       context 'host' do
         it 'removes http from host' do
-          SwaggerClient.configure { |c| c.host = 'http://example.com' }
-          expect(SwaggerClient::Configuration.default.host).to eq('example.com')
+          SquashMatrixAPI.configure { |c| c.host = 'http://example.com' }
+          expect(SquashMatrixAPI::Configuration.default.host).to eq('example.com')
         end
 
         it 'removes https from host' do
-          SwaggerClient.configure { |c| c.host = 'https://wookiee.com' }
-          expect(SwaggerClient::ApiClient.default.config.host).to eq('wookiee.com')
+          SquashMatrixAPI.configure { |c| c.host = 'https://wookiee.com' }
+          expect(SquashMatrixAPI::ApiClient.default.config.host).to eq('wookiee.com')
         end
 
         it 'removes trailing path from host' do
-          SwaggerClient.configure { |c| c.host = 'hobo.com/v4' }
-          expect(SwaggerClient::Configuration.default.host).to eq('hobo.com')
+          SquashMatrixAPI.configure { |c| c.host = 'hobo.com/v4' }
+          expect(SquashMatrixAPI::Configuration.default.host).to eq('hobo.com')
         end
       end
 
       context 'base_path' do
         it "prepends a slash to base_path" do
-          SwaggerClient.configure { |c| c.base_path = 'v4/dog' }
-          expect(SwaggerClient::Configuration.default.base_path).to eq('/v4/dog')
+          SquashMatrixAPI.configure { |c| c.base_path = 'v4/dog' }
+          expect(SquashMatrixAPI::Configuration.default.base_path).to eq('/v4/dog')
         end
 
         it "doesn't prepend a slash if one is already there" do
-          SwaggerClient.configure { |c| c.base_path = '/v4/dog' }
-          expect(SwaggerClient::Configuration.default.base_path).to eq('/v4/dog')
+          SquashMatrixAPI.configure { |c| c.base_path = '/v4/dog' }
+          expect(SquashMatrixAPI::Configuration.default.base_path).to eq('/v4/dog')
         end
 
         it "ends up as a blank string if nil" do
-          SwaggerClient.configure { |c| c.base_path = nil }
-          expect(SwaggerClient::Configuration.default.base_path).to eq('')
+          SquashMatrixAPI.configure { |c| c.base_path = nil }
+          expect(SquashMatrixAPI::Configuration.default.base_path).to eq('')
         end
       end
     end
   end
 
   describe "params_encoding in #build_request" do
-    let(:config) { SwaggerClient::Configuration.new }
-    let(:api_client) { SwaggerClient::ApiClient.new(config) }
+    let(:config) { SquashMatrixAPI::Configuration.new }
+    let(:api_client) { SquashMatrixAPI::ApiClient.new(config) }
 
     it "defaults to nil" do
-      expect(SwaggerClient::Configuration.default.params_encoding).to eq(nil)
+      expect(SquashMatrixAPI::Configuration.default.params_encoding).to eq(nil)
       expect(config.params_encoding).to eq(nil)
 
       request = api_client.build_request(:get, '/test')
@@ -71,11 +71,11 @@ describe SwaggerClient::ApiClient do
   end
 
   describe "timeout in #build_request" do
-    let(:config) { SwaggerClient::Configuration.new }
-    let(:api_client) { SwaggerClient::ApiClient.new(config) }
+    let(:config) { SquashMatrixAPI::Configuration.new }
+    let(:api_client) { SquashMatrixAPI::ApiClient.new(config) }
 
     it "defaults to 0" do
-      expect(SwaggerClient::Configuration.default.timeout).to eq(0)
+      expect(SquashMatrixAPI::Configuration.default.timeout).to eq(0)
       expect(config.timeout).to eq(0)
 
       request = api_client.build_request(:get, '/test')
@@ -91,7 +91,7 @@ describe SwaggerClient::ApiClient do
 
   describe "#deserialize" do
     it "handles Array<Integer>" do
-      api_client = SwaggerClient::ApiClient.new
+      api_client = SquashMatrixAPI::ApiClient.new
       headers = {'Content-Type' => 'application/json'}
       response = double('response', headers: headers, body: '[12, 34]')
       data = api_client.deserialize(response, 'Array<Integer>')
@@ -100,7 +100,7 @@ describe SwaggerClient::ApiClient do
     end
 
     it "handles Array<Array<Integer>>" do
-      api_client = SwaggerClient::ApiClient.new
+      api_client = SquashMatrixAPI::ApiClient.new
       headers = {'Content-Type' => 'application/json'}
       response = double('response', headers: headers, body: '[[12, 34], [56]]')
       data = api_client.deserialize(response, 'Array<Array<Integer>>')
@@ -109,7 +109,7 @@ describe SwaggerClient::ApiClient do
     end
 
     it "handles Hash<String, String>" do
-      api_client = SwaggerClient::ApiClient.new
+      api_client = SquashMatrixAPI::ApiClient.new
       headers = {'Content-Type' => 'application/json'}
       response = double('response', headers: headers, body: '{"message": "Hello"}')
       data = api_client.deserialize(response, 'Hash<String, String>')
@@ -121,8 +121,8 @@ describe SwaggerClient::ApiClient do
   describe "#object_to_hash" do
     it "ignores nils and includes empty arrays" do
       # uncomment below to test object_to_hash for model
-      #api_client = SwaggerClient::ApiClient.new
-      #_model = SwaggerClient::ModelName.new
+      #api_client = SquashMatrixAPI::ApiClient.new
+      #_model = SquashMatrixAPI::ModelName.new
       # update the model attribute below
       #_model.id = 1 
       # update the expected value (hash) below
@@ -133,7 +133,7 @@ describe SwaggerClient::ApiClient do
 
   describe "#build_collection_param" do
     let(:param) { ['aa', 'bb', 'cc'] }
-    let(:api_client) { SwaggerClient::ApiClient.new }
+    let(:api_client) { SquashMatrixAPI::ApiClient.new }
 
     it "works for csv" do
       expect(api_client.build_collection_param(param, :csv)).to eq('aa,bb,cc')
@@ -161,7 +161,7 @@ describe SwaggerClient::ApiClient do
   end
 
   describe "#json_mime?" do
-    let(:api_client) { SwaggerClient::ApiClient.new }
+    let(:api_client) { SquashMatrixAPI::ApiClient.new }
 
     it "works" do
       expect(api_client.json_mime?(nil)).to eq false
@@ -178,7 +178,7 @@ describe SwaggerClient::ApiClient do
   end
 
   describe "#select_header_accept" do
-    let(:api_client) { SwaggerClient::ApiClient.new }
+    let(:api_client) { SquashMatrixAPI::ApiClient.new }
 
     it "works" do
       expect(api_client.select_header_accept(nil)).to be_nil
@@ -194,7 +194,7 @@ describe SwaggerClient::ApiClient do
   end
 
   describe "#select_header_content_type" do
-    let(:api_client) { SwaggerClient::ApiClient.new }
+    let(:api_client) { SquashMatrixAPI::ApiClient.new }
 
     it "works" do
       expect(api_client.select_header_content_type(nil)).to eq('application/json')
@@ -209,7 +209,7 @@ describe SwaggerClient::ApiClient do
   end
 
   describe "#sanitize_filename" do
-    let(:api_client) { SwaggerClient::ApiClient.new }
+    let(:api_client) { SquashMatrixAPI::ApiClient.new }
 
     it "works" do
       expect(api_client.sanitize_filename('sun')).to eq('sun')
