@@ -1,0 +1,10 @@
+{
+    "projectName" : "squash_matrix_api",
+    "packageVersion" : "1.0.0",
+    "packageUrl" : "https://github.com/wilkosz/squash_matrix_io_sdks/tree/master/python",
+    "packageName": "SquashMatrixAPI",
+    "apiPackage" : "SquashMatrixClientAPI",
+    "modelPackage" : "SquashMatrixClientModel",
+    "invokerPackage" : "SquashMatrixClient",
+    "packagePath" : "SquashMatrixAPI"
+}
